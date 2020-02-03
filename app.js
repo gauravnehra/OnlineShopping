@@ -5,12 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-//created for product.route.js
-var productsRouter = require('./routes/product.route');
+//var usersRouter = require('./routes/users');
 
+//poiting to new route
+var usersRouter = require('./routes/user.route');
+//created for product.route.js
+//var productsRouter = require('./routes/product.route');
+
+//mongo db url
 var url = "mongodb+srv://grv:onlineshopping123@onlineshopping-43cvt.mongodb.net/test?retryWrites=true&w=majority";
 
+//connecting to mongodb cluster on server
 const mongoose = require("mongoose");mongoose.Promise = global.Promise;// Connecting to the database
 mongoose
   .connect(url, {
@@ -40,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //created for product.route.js
-app.use('/products', productsRouter);
+//app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

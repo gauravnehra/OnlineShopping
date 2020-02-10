@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
 
 //poiting to new route
-var usersRouter = require('./routes/user.route');
+var usersRouter = require('./routes/user.route.js');
 //created for product.route.js
 //var productsRouter = require('./routes/product.route');
 

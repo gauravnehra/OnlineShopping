@@ -1,8 +1,12 @@
 const User = require('../models/user.model.js');
+const Token = require('../models/token.model.js');
 
 exports.signup = async(req, res) => {
     var user = new User(req.body);
-    await user.save();
+    user = await user.save();
+    var token = new Token({userid:user._id});
+    token = await token.save();
+    res.header("Authorisation", token._id);
     res.status(200).send(user);
 }
 
@@ -11,5 +15,9 @@ exports.signin = async(req, res) => {
 }
 
 exports.retrieveuser = async(req, res) => {
-//TODO
+    var user = await User.findById(req.userid);
+    if(!user) {
+        //
+    }
+    res.status(200).send(user);
 }

@@ -1,7 +1,7 @@
 const Token  = require('../models/token.model.js')
 
 module.exports = async function(req, res, next) {
-    var token = req.header["Authorisation"];
+    var token = req.headers["authorization"];
     if(!token) {
         return res.send({Message: "no token provided"});
     }

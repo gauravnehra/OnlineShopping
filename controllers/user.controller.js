@@ -6,12 +6,20 @@ exports.signup = async(req, res) => {
     user = await user.save();
     var token = new Token({userid:user._id});
     token = await token.save();
-    res.header("Authorisation", token._id);
+    res.header("authorization", token._id);
     res.status(200).send(user);
 }
 
 exports.signin = async(req, res) => {
-//TODO
+    //var user = await;
+    if(!user) {
+        return res.send({Message: "Enter valid email"});
+    }
+    
+}
+
+exports.signout = async(req, res) => {
+    //TODO
 }
 
 exports.retrieveuser = async(req, res) => {
